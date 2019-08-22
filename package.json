@@ -1,7 +1,7 @@
 {
-  "name": "tv-showtime",
+  "name": "marvel-db",
   "version": "1.0.0",
-  "description": "Practice Project ",
+  "description": "JS Practice Project ",
   "main": "index.js",
   "scripts": {
     "server": "live-server --browser=Firefox --open=/dist",
