@@ -22,7 +22,7 @@ module.exports = {
       template: './src/index.html', //Archivo de entrada
     }),
     new Dotenv(), //Para poder usar el archivo .env
-    new CopyPlugin([{ from: 'public' }]),
+    new CopyPlugin([{ from: 'public' }]), //Para copiar todos los archivos de 'build' a 'dist'
   ],
   module: {
     rules: [

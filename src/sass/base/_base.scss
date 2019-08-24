@@ -1,0 +1,38 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%; //1rem = 10px
+  /* 10px/16px esto se hace para que el usuario pueda cambiar el tamaño de fuente en el navegador */
+
+  @include respond(tab-land) {
+    //width less than 1200px?
+    font-size: 56.25%; //1rem = 9px
+  }
+
+  @include respond(tab-port) {
+    //width less than 900px?
+    font-size: 50%; //1rem = 8px
+  }
+
+  @include respond(phone) {
+    //width less than 600px?
+    font-size: 50%; //1rem = 8px
+  }
+
+  @include respond(big-desktop) {
+    //width more than 1800px?
+    font-size: 75%; //1rem = 12px
+  }
+
+}
+
+body {
+  box-sizing: border-box;
+  font-family: 'Montserrat';
+}

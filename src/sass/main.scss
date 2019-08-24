@@ -1,2 +1,6 @@
-@import "components/button";
+@import "abstract/functions";
+@import "abstract/mixins";
+@import "abstract/variables";
+
 @import "layout/header";
+@import "base/base";
