@@ -2,5 +2,11 @@
 @import "abstract/mixins";
 @import "abstract/variables";
 
-@import "layout/header";
 @import "base/base";
+
+@import "layout/content";
+@import "layout/header";
+
+@import "pages/detail";
+@import "pages/home";
+@import "pages/results";
