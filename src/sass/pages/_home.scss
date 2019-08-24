@@ -4,13 +4,8 @@
   margin-bottom: 3rem;
   display: flex;
   border-bottom: 4px solid $color-primary;
-  padding-bottom: 1rem;
+  padding-bottom: 0.6rem;
   padding-left: 1rem;
-
-  &_icon {
-    font-size: 2.5rem;
-    color: $color-primary;
-  }
 
   &_input {
     width: 100%;
