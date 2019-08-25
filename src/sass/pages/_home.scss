@@ -1,27 +1,3 @@
-.searchbar {
-  width: 80%;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-  display: flex;
-  border-bottom: 4px solid $color-primary;
-  padding-bottom: 0.6rem;
-  padding-left: 1rem;
-
-  &_input {
-    width: 100%;
-    border: none;
-    font-size: 2rem;
-    margin-left: 1.5rem;
-
-    &::placeholder {
-      text-transform: uppercase;
-      font-weight: 600;
-      font-family: 'Montserrat';
-      color: #fe000091;
-    }
-  }
-}
-
 .home {
   position: absolute;
   top: 50%;
