@@ -6,6 +6,18 @@
   border-bottom: 4px solid $color-primary;
   padding-bottom: 0.6rem;
   padding-left: 1rem;
+  z-index: 9999;
+
+  &__button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform .3s ease;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
 
   &__input {
     width: 100%;
