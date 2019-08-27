@@ -1,5 +1,5 @@
 import Search from './models/Search';
-import { elements, renderLoader } from './views/base';
+import { elements, renderLoader, clearLoader } from './views/base';
 import * as searchView from './views/searchView';
 
 //En esta variable guardaremos todo el estado de la app
@@ -16,13 +16,15 @@ const controlSearch = async () => {
     //Preparamos interfaz
     searchView.clearInput();
     searchView.clearContent();
-
     renderLoader(elements.mainContent);
 
+    //Obtenemos los resultados
     await state.search.getResults();
 
-    console.log(query);
-    console.log(state.search.results);
+    //Eliminamos el loader
+    clearLoader();
+
+    searchView.renderResults(state.search.results);
   }
 };
 

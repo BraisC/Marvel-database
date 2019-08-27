@@ -8,7 +8,7 @@ export default class Search {
   async getResults() {
     try {
       const result = await Axios(
-        `https://gateway.marvel.com/v1/public/comics?titleStartsWith=${this.query}&orderBy=onsaleDate&limit=15&offset=0&apikey=${process.env.API_KEY}`
+        `https://gateway.marvel.com/v1/public/comics?titleStartsWith=${this.query}&orderBy=onsaleDate&limit=8&offset=0&apikey=${process.env.API_KEY}`
       );
 
       this.results = result.data.data.results;

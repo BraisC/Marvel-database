@@ -15,3 +15,8 @@ export const renderLoader = parent => {
   //Insertamos el HTML del loader en el elemento que hayamos recibido como parámetro
   parent.insertAdjacentHTML('afterbegin', loader);
 };
+
+export const clearLoader = () => {
+  const loader = document.querySelector('.loader');
+  if (loader) loader.parentElement.removeChild(loader);
+};
