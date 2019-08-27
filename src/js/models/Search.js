@@ -5,10 +5,11 @@ export default class Search {
     this.query = query;
   }
 
-  async getResults() {
+  async getResults(page = 1, resultsPerPage = 8) {
+    const offset = page * resultsPerPage - resultsPerPage;
     try {
       const result = await Axios(
-        `https://gateway.marvel.com/v1/public/comics?titleStartsWith=${this.query}&orderBy=onsaleDate&limit=8&offset=0&apikey=${process.env.API_KEY}`
+        `https://gateway.marvel.com/v1/public/comics?titleStartsWith=${this.query}&orderBy=onsaleDate&limit=${resultsPerPage}&offset=${offset}&apikey=${process.env.API_KEY}`
       );
 
       this.results = result.data.data.results;
