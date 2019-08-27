@@ -5,14 +5,14 @@ export const elements = {
 };
 
 export const renderLoader = parent => {
-  //Creamos el HTML del loader
+  //Loader HTML
   const loader = `
       <div class="loader">
           <img src="./images/logo-rojo-peq.png" alt=""/>
       </div>
   `;
 
-  //Insertamos el HTML del loader en el elemento que hayamos recibido como parámetro
+  //Injecting the loader HTML into the page
   parent.insertAdjacentHTML('afterbegin', loader);
 };
 

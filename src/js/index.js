@@ -2,28 +2,29 @@ import Search from './models/Search';
 import { elements, renderLoader, clearLoader } from './views/base';
 import * as searchView from './views/searchView';
 
-//En esta variable guardaremos todo el estado de la app
+//This variable will store all the state of the app
 const state = {};
 
 const controlSearch = async () => {
-  //Obtenemos la cadena de busqueda
+  //We get the search query
   const query = searchView.getInput();
 
   if (query) {
-    //Creamos nueva búsqueda
+    //Instantiate a new Search
     state.search = new Search(query);
 
-    //Preparamos interfaz
+    //Getting ready the UI
     searchView.clearInput();
     searchView.clearContent();
     renderLoader(elements.mainContent);
 
-    //Obtenemos los resultados
+    //Getting the results
     await state.search.getResults();
 
-    //Eliminamos el loader
+    //Get rid of the loader
     clearLoader();
 
+    //Showing the results on the UI
     searchView.renderResults(state.search.results);
   }
 };

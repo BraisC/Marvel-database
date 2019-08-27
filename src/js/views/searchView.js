@@ -16,13 +16,14 @@ export const clearContent = () => {
 const renderComic = comic => {
   const comicContainer = document.querySelector('.results');
   const markup = `
-  <div class="results__item" data-id="${comic.id}">
-    <img src="${comic.thumbnail.path}/portrait_incredible.jpg" 
-    alt="${comic.title}" class="results__image" />
-    <div class="results__layer">
-      <p class="results__title">${comic.title.toUpperCase()}</p>
-    </div>
-  </div>`;
+      <div class="results__item" data-id="${comic.id}">
+        <img src="${comic.thumbnail.path}/portrait_incredible.jpg" 
+        alt="${comic.title}" class="results__image" />
+        <div class="results__layer">
+          <p class="results__title">${comic.title.toUpperCase()}</p>
+        </div>
+      </div>
+  `;
 
   comicContainer.insertAdjacentHTML('beforeend', markup);
 };
@@ -32,5 +33,6 @@ export const renderResults = comics => {
   const results = document.createElement('section');
   results.classList.add('results');
   elements.mainContent.appendChild(results);
+  //Function for rendering each item of the array 'comics'
   comics.forEach(renderComic);
 };
