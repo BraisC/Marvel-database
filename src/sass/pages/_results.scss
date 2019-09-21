@@ -64,7 +64,6 @@
 
 .pagination {
   display: flex;
-  justify-content: space-between;
   width: 100%;
 
   &__side {
@@ -86,6 +85,7 @@
 
     &--right {
       flex-direction: row-reverse;
+      margin-left: auto;
       padding-left: 2rem;
       padding-right: 1rem;
     }

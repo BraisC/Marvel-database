@@ -13,6 +13,8 @@ export default class Search {
       );
 
       this.results = result.data.data.results;
+      this.numResults = result.data.data.total;
+      console.log(this.numResults);
     } catch (error) {
       alert(error);
     }

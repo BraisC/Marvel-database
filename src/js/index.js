@@ -7,27 +7,24 @@ const state = {};
 
 const searchController = async (page = 1) => {
   //We get the search query
-  if (page === 1) {
-    const query = searchView.getInput();
+  const query = searchView.getInput();
+  if (page === 1 && query) {
+    //Instantiate a new Search
+    state.search = new Search(query);
 
-    if (query) {
-      //Instantiate a new Search
-      state.search = new Search(query);
+    //Getting ready the UI
+    searchView.clearInput();
+    searchView.clearContent();
+    renderLoader(elements.mainContent);
 
-      //Getting ready the UI
-      searchView.clearInput();
-      searchView.clearContent();
-      renderLoader(elements.mainContent);
+    //Getting the results
+    await state.search.getResults();
 
-      //Getting the results
-      await state.search.getResults();
+    //Get rid of the loader
+    clearLoader();
 
-      //Get rid of the loader
-      clearLoader();
-
-      //Showing the results on the UI
-      searchView.renderResults(state.search.results);
-    }
+    //Showing the results on the UI
+    searchView.renderResults(state.search.results, state.search.numResults, page);
   } else {
     //Getting ready the UI
     searchView.clearInput();
@@ -41,11 +38,20 @@ const searchController = async (page = 1) => {
     clearLoader();
 
     //Showing the results on the UI
-    searchView.renderResults(state.search.results);
+    searchView.renderResults(state.search.results, state.search.numResults, page);
   }
 };
 
 elements.searchBar.addEventListener('submit', e => {
   e.preventDefault();
   searchController();
+});
+
+document.addEventListener('click', event => {
+  const btn = event.target.closest('.pagination__side');
+
+  if (btn) {
+    const goToPage = parseInt(btn.dataset.goto);
+    searchController(goToPage);
+  }
 });
