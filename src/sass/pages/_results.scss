@@ -83,14 +83,14 @@
       }
     }
 
-    &--right {
+    &--next {
       flex-direction: row-reverse;
       margin-left: auto;
       padding-left: 2rem;
       padding-right: 1rem;
     }
 
-    &--left {
+    &--prev {
       padding-right: 2rem;
       padding-left: 1rem;
     }
