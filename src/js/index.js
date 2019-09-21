@@ -11,35 +11,20 @@ const searchController = async (page = 1) => {
   if (page === 1 && query) {
     //Instantiate a new Search
     state.search = new Search(query);
-
-    //Getting ready the UI
-    searchView.clearInput();
-    searchView.clearContent();
-    renderLoader(elements.mainContent);
-
-    //Getting the results
-    await state.search.getResults();
-
-    //Get rid of the loader
-    clearLoader();
-
-    //Showing the results on the UI
-    searchView.renderResults(state.search.results, state.search.numResults, page);
-  } else {
-    //Getting ready the UI
-    searchView.clearInput();
-    searchView.clearContent();
-    renderLoader(elements.mainContent);
-
-    //Getting the results
-    await state.search.getResults(page);
-
-    //Get rid of the loader
-    clearLoader();
-
-    //Showing the results on the UI
-    searchView.renderResults(state.search.results, state.search.numResults, page);
   }
+  //Getting ready the UI
+  searchView.clearInput();
+  searchView.clearContent();
+  renderLoader(elements.mainContent);
+
+  //Getting the results
+  await state.search.getResults(page);
+
+  //Get rid of the loader
+  clearLoader();
+
+  //Showing the results on the UI
+  searchView.renderResults(state.search.results, state.search.numResults, page);
 };
 
 elements.searchBar.addEventListener('submit', e => {
