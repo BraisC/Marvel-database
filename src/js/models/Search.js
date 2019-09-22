@@ -14,6 +14,7 @@ export default class Search {
 
       this.results = result.data.data.results;
       this.numResults = result.data.data.total;
+      this.page = page;
     } catch (error) {
       alert(error);
     }
