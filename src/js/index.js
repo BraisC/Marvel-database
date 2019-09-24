@@ -59,7 +59,6 @@ const comicController = async id => {
     state.comic.formatDate();
     state.comic.setCreators();
 
-    console.log(state.comic.creators);
     comicView.renderComic(state.comic);
 
     clearLoader();

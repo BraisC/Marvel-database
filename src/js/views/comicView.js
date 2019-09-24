@@ -4,18 +4,9 @@ const createCreator = (role, name) => {
   return `
   <div class="artists">
     <h3 class="title writer__title">${role}</h3>
-    <span class="text writer__text">${name.join('<br>')}</span>
+    <span class="text writer__text">${name.split('|').join('<br>')}</span>
   </div>
   `;
-};
-
-const parseCreators = creators => {
-  const creatorList = [];
-  Object.keys(creators).forEach(key => {
-    creatorList.push(createCreator(key, creators[key]));
-  });
-
-  return creatorList;
 };
 
 export const renderComic = comic => {
@@ -31,7 +22,7 @@ export const renderComic = comic => {
               <h3 class="title published__title">published:</h3>
               <span class="text published__text">${comic.date}</span>
             </div>
-            ${parseCreators(comic.creators).join('')}
+            ${comic.creators.map(item => createCreator(item.role, item.name)).join('')}
           </div>
           <p class="detail__text">
             ${comic.description || 'There is no description for this comic'}

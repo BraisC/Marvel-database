@@ -21,7 +21,6 @@ export default class Comic {
         result.data.data.results[0].thumbnail.extension;
       this.creators = result.data.data.results[0].creators.items;
       this.date = result.data.data.results[0].dates[0].date;
-      console.log(this.creators);
     } catch (error) {
       alert(error);
     }
@@ -34,15 +33,25 @@ export default class Comic {
   }
 
   setCreators() {
-    const creators = {};
+    /* const creators = {};
     this.creators.forEach(item => {
       if (creators.hasOwnProperty(item.role)) {
         creators[item.role].push(item.name);
       } else {
         creators[item.role] = [item.name];
       }
-    });
+    }); */
 
-    this.creators = creators;
+    /* this.creators = creators; */
+
+    this.creators = this.creators.reduce((acc, elem) => {
+      if (acc.find(item => item.role === elem.role)) {
+        acc.find(item => item.role === elem.role).name += '|' + elem.name; //modifies the returned object because in JS it is a reference to the original object
+        acc.find(item => item.role === elem.role).resourceURI += '|' + elem.resourceURI;
+      } else {
+        acc.push(elem);
+      }
+      return acc;
+    }, []);
   }
 }
