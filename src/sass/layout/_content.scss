@@ -4,8 +4,9 @@
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-  //min-height: calc(100vh - 10rem);
+  min-height: calc(100vh - 10rem);
   padding: 0 2rem;
+  position: relative;
 }
 
 .content {
