@@ -36,3 +36,8 @@ body {
   box-sizing: border-box;
   font-family: 'Montserrat';
 }
+
+textarea:focus,
+input:focus {
+  outline: none;
+}

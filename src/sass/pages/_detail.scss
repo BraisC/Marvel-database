@@ -10,6 +10,8 @@
   &__cover {
     max-width: 44rem;
     margin-right: 10rem;
+    display: flex;
+    align-items: center;
 
     @include respond(tab-port) {
       margin-right: 0;
