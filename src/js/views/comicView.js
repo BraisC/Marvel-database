@@ -12,10 +12,10 @@ const createCreator = (role, name) => {
 export const renderComic = comic => {
   const markup = `
       <section class="detail">
-        <div class="detail__cover">
+        <div class="detail__cover animated fadeIn">
           <img src="${comic.cover}" alt="${comic.title}" class="detail__image" />
         </div>
-        <div class="detail__info">
+        <div class="detail__info animated fadeInRight">
           <h2 class="detail__title">${comic.title.toUpperCase()}</h2>
           <div class="detail__data">
             <div class="published">

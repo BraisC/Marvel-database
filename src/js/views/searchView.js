@@ -16,7 +16,7 @@ export const clearContent = () => {
 const renderComic = comic => {
   const comicContainer = document.querySelector('.results');
   const markup = `
-      <div class="results__item" data-id="${comic.id}">
+      <div class="results__item animated fadeIn" data-id="${comic.id}">
         <img src="${comic.thumbnail.path}/portrait_incredible.jpg" 
         alt="${comic.title}" class="results__image" />
         <div class="results__layer">
@@ -66,12 +66,16 @@ export const renderResults = (comics, numResults, page = 1, resultsPerPage = 8) 
   const results = document.createElement('section');
   results.classList.add('results');
   elements.mainContent.appendChild(results);
-  //Function for rendering each item of the array 'comics'
-  comics.forEach(renderComic);
-  //Append container for pagination buttons
-  const pagination = document.createElement('div');
-  pagination.classList.add('pagination');
-  results.appendChild(pagination);
-  //Call to renderButtons to show the buttons
-  renderButtons(page, numResults, resultsPerPage);
+  if (comics.length > 0) {
+    //Function for rendering each item of the array 'comics'
+    comics.forEach(renderComic);
+    //Append container for pagination buttons
+    const pagination = document.createElement('div');
+    pagination.classList.add('pagination');
+    results.appendChild(pagination);
+    //Call to renderButtons to show the buttons
+    renderButtons(page, numResults, resultsPerPage);
+  } else {
+    results.innerHTML = 'Balanced, like everything should be';
+  }
 };
