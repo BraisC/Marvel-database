@@ -7,6 +7,18 @@
     align-items: center;
   }
 
+  &__back {
+    position: absolute;
+    top: 10rem;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: $color-primary;
+    border: none;
+    color: white;
+    height: 3rem;
+    width: 3rem;
+  }
+
   &__cover {
     width: 44rem;
     margin-right: 10rem;

@@ -68,6 +68,8 @@ const comicController = async id => {
 
 elements.mainContent.addEventListener('click', event => {
   const comic = event.target.closest('.results__item');
+  const backButton = event.target.closest('.detail__back');
 
   if (comic) comicController(comic.dataset.id);
+  if (backButton) searchController(state.search.page);
 });
