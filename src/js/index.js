@@ -38,20 +38,6 @@ const searchController = async (page = 1) => {
   }
 };
 
-elements.searchBar.addEventListener('submit', e => {
-  e.preventDefault();
-  searchController();
-});
-
-elements.mainContent.addEventListener('click', event => {
-  const btn = event.target.closest('.pagination__side');
-
-  if (btn) {
-    const goToPage = parseInt(btn.dataset.goto);
-    searchController(goToPage);
-  }
-});
-
 //Comic controller
 const comicController = async id => {
   const comicId = id;
@@ -106,14 +92,24 @@ window.addEventListener('load', () => {
   });
 });
 
+elements.searchBar.addEventListener('submit', e => {
+  e.preventDefault();
+  searchController();
+});
+
 elements.mainContent.addEventListener('click', event => {
   const comic = event.target.closest('.results__item');
   const backButton = event.target.closest('.detail__back');
   const likeButton = event.target.closest('.button--like');
+  const btn = event.target.closest('.pagination__side');
 
   if (comic) comicController(comic.dataset.id);
   if (backButton) state.search ? searchController(state.search.page) : renderHome();
   if (likeButton) likeController();
+  if (btn) {
+    const goToPage = parseInt(btn.dataset.goto);
+    searchController(goToPage);
+  }
 });
 
 elements.likesMenu.addEventListener('click', event => {
