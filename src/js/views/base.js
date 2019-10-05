@@ -22,3 +22,18 @@ export const clearLoader = () => {
   const loader = document.querySelector('.loader');
   if (loader) loader.parentElement.removeChild(loader);
 };
+
+export const renderHome = () => {
+  const markup = `
+    <section class="home">
+      <img src="./images/gauntlet.png" alt="" class="home__image" />
+      <p class="home__text">snap!</p>
+    </section>
+  `;
+  clearContent();
+  elements.mainContent.insertAdjacentHTML('afterbegin', markup);
+};
+
+export const clearContent = () => {
+  elements.mainContent.innerHTML = '';
+};

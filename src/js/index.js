@@ -1,7 +1,7 @@
 import Search from './models/Search';
 import Comic from './models/Comic';
 import Likes from './models/Likes';
-import { elements, renderLoader, clearLoader } from './views/base';
+import { elements, renderLoader, clearLoader, renderHome } from './views/base';
 import * as searchView from './views/searchView';
 import * as comicView from './views/comicView';
 import * as likesView from './views/likesView';
@@ -15,24 +15,23 @@ const searchController = async (page = 1) => {
   if (query) {
     //Instantiate a new Search
     state.search = new Search(query);
-  }
-  //Getting ready the UI
-  searchView.clearInput();
-  searchView.clearContent();
-  renderLoader(elements.mainContent);
+    //Getting ready the UI
+    searchView.clearInput();
+    searchView.clearContent();
+    renderLoader(elements.mainContent);
 
-  //Getting the results
-  await state.search.getResults(page);
+    //Getting the results
+    await state.search.getResults(page);
 
-  //Get rid of the loader
-  clearLoader();
+    //Get rid of the loader
+    clearLoader();
 
-  //Showing the results on the UI
-  if (state.search.results.length > 0) {
-    searchView.renderResults(state.search.results, state.search.numResults, page);
-  } else {
-    console.log('hola');
-    searchView.renderNotFound();
+    //Showing the results on the UI
+    if (state.search.results.length > 0) {
+      searchView.renderResults(state.search.results, state.search.numResults, page);
+    } else {
+      searchView.renderNotFound();
+    }
   }
 };
 
@@ -112,7 +111,7 @@ elements.mainContent.addEventListener('click', event => {
   const likeButton = event.target.closest('.button--like');
 
   if (comic) comicController(comic.dataset.id);
-  if (backButton) searchController(state.search.page);
+  if (backButton) state.search ? searchController(state.search.page) : renderHome();
   if (likeButton) likeController();
 });
 
@@ -122,5 +121,12 @@ elements.likesMenu.addEventListener('click', event => {
     likeMenu.classList.contains('activo')
       ? likeMenu.classList.remove('activo')
       : likeMenu.classList.add('activo');
+  }
+});
+
+elements.likesList.addEventListener('click', event => {
+  const recipe = event.target.closest('.likes__link');
+  if (recipe) {
+    comicController(recipe.dataset.id);
   }
 });
