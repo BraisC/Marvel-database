@@ -26,7 +26,7 @@ API_KEY = (put your marvel api key here)
 npm run start
 ```
 
-#### To do a production build
+##### To do a production build
 
 ```shell
 npm run build
