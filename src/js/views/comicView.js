@@ -29,12 +29,14 @@ export const renderComic = (comic, isLiked, isRead) => {
             ${comic.description || 'There is no description for this comic'}
           </p>
           <div class="detail__buttons">
-            <a href="${comic.url}" target="_blank" class="button button--buy">
+            <a href="${
+              comic.url
+            }" target="_blank" class="button button--buy" title="Buy this comic">
               <svg class="button__icon">
                 <use href="images/icons.svg#icon-shopping-cart"></use>
               </svg>
             </a>
-            <button class="button button--like">
+            <button class="button button--like" title="Add to favorites">
               <svg class="button__icon">
                 <use href="images/icons.svg#icon-heart${isLiked ? '' : '-outlined'}"></use>
               </svg>

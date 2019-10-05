@@ -80,7 +80,7 @@ export const renderResults = (comics, numResults, page = 1, resultsPerPage = 8) 
 export const renderNotFound = () => {
   const markup = `
     <section class="home">
-      <img src="./images/balanced.png" alt="" class="home__image" />
+      <img src="./images/balanced.jpg" alt="Not Found" class="home__image" />
     </section>`;
 
   elements.mainContent.innerHTML = markup;
