@@ -39,11 +39,6 @@ export const renderComic = (comic, isLiked, isRead) => {
                 <use href="images/icons.svg#icon-heart${isLiked ? '' : '-outlined'}"></use>
               </svg>
             </button>
-            <button class="button button--read">
-              <svg class="button__icon">
-                <use href="images/icons.svg#icon-circle-with-${isRead ? 'minus' : 'plus'}"></use>
-              </svg>
-            </button>
           </div>
         </div>
       </section>

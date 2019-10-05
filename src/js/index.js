@@ -12,9 +12,12 @@ const state = {};
 const searchController = async (page = 1) => {
   //We get the search query
   const query = searchView.getInput();
-  if (query) {
+  if (query || state.search) {
     //Instantiate a new Search
-    state.search = new Search(query);
+    if (query) {
+      state.search = new Search(query);
+    }
+
     //Getting ready the UI
     searchView.clearInput();
     searchView.clearContent();
@@ -129,4 +132,8 @@ elements.likesList.addEventListener('click', event => {
   if (recipe) {
     comicController(recipe.dataset.id);
   }
+});
+
+document.querySelector('.main').addEventListener('click', () => {
+  document.querySelector('.activo').classList.remove('activo');
 });
