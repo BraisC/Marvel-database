@@ -88,14 +88,22 @@
 
   &__text {
     font-size: 1.8rem;
+    margin-bottom: 40px;
 
     @include respond(tab-port) {
       margin-bottom: 30px;
     }
 
-
     @include respond(phone) {
       font-size: 1.6rem;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+
+    & .button {
+      margin: 1rem;
     }
   }
 }

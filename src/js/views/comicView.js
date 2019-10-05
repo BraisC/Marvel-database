@@ -9,7 +9,27 @@ const createCreator = (role, name) => {
   `;
 };
 
-export const renderComic = comic => {
+const createButton = (type, url) => {
+  if (url) {
+    return `
+    <a href="${url}" target="_blank" class="button">
+      <svg class="button__icon">
+        <use href="images/icons.svg#icon-${type}"></use>
+      </svg>
+    </a>
+    `;
+  } else {
+    return `
+    <button class="button">
+      <svg class="button__icon">
+        <use href="images/icons.svg#icon-${type}"></use>
+      </svg>
+    </button>
+    `;
+  }
+};
+
+export const renderComic = (comic, isLiked, isReaded) => {
   const markup = `
       <section class="detail">
         <button class="detail__back"><i class="fas fa-angle-left detail__back__icon"></i>Go Back</button>
@@ -28,6 +48,11 @@ export const renderComic = comic => {
           <p class="detail__text">
             ${comic.description || 'There is no description for this comic'}
           </p>
+          <div class="detail__buttons">
+            ${createButton('shopping-cart', comic.url)}
+            ${createButton('check')}
+            ${isLiked ? createButton('heart') : createButton('heart-outlined')}
+          </div>
         </div>
       </section>
       `;
