@@ -35,7 +35,8 @@ export default class Comic {
   setCreators() {
     this.creators = this.creators.reduce((acc, elem) => {
       if (acc.find(item => item.role === elem.role)) {
-        acc.find(item => item.role === elem.role).name += '|' + elem.name; //modifies the returned object because in JS it is a reference to the original object
+        //modifies the returned object because in JS it is a reference to the original object
+        acc.find(item => item.role === elem.role).name += '|' + elem.name;
         acc.find(item => item.role === elem.role).resourceURI += '|' + elem.resourceURI;
       } else {
         acc.push(elem);

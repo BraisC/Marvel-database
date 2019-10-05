@@ -12,7 +12,7 @@ const createCreator = (role, name) => {
 export const renderComic = comic => {
   const markup = `
       <section class="detail">
-        <button class="detail__back"><i class="fas fa-angle-left"></i></button>
+        <button class="detail__back"><i class="fas fa-angle-left detail__back__icon"></i>Go Back</button>
         <div class="detail__cover animated fadeIn">
           <img src="${comic.cover}" alt="${comic.title}" class="detail__image" />
         </div>
