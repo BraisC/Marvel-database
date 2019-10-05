@@ -66,16 +66,22 @@ export const renderResults = (comics, numResults, page = 1, resultsPerPage = 8) 
   const results = document.createElement('section');
   results.classList.add('results');
   elements.mainContent.appendChild(results);
-  if (comics.length > 0) {
-    //Function for rendering each item of the array 'comics'
-    comics.forEach(renderComic);
-    //Append container for pagination buttons
-    const pagination = document.createElement('div');
-    pagination.classList.add('pagination');
-    results.appendChild(pagination);
-    //Call to renderButtons to show the buttons
-    renderButtons(page, numResults, resultsPerPage);
-  } else {
-    results.innerHTML = 'Balanced, like everything should be';
-  }
+
+  //Function for rendering each item of the array 'comics'
+  comics.forEach(renderComic);
+  //Append container for pagination buttons
+  const pagination = document.createElement('div');
+  pagination.classList.add('pagination');
+  results.appendChild(pagination);
+  //Call to renderButtons to show the buttons
+  renderButtons(page, numResults, resultsPerPage);
+};
+
+export const renderNotFound = () => {
+  const markup = `
+    <section class="home">
+      <img src="./images/balanced.png" alt="" class="home__image" />
+    </section>`;
+
+  elements.mainContent.innerHTML = markup;
 };

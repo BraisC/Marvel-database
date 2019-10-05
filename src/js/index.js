@@ -26,7 +26,12 @@ const searchController = async (page = 1) => {
   clearLoader();
 
   //Showing the results on the UI
-  searchView.renderResults(state.search.results, state.search.numResults, page);
+  if (state.search.results.length > 0) {
+    searchView.renderResults(state.search.results, state.search.numResults, page);
+  } else {
+    console.log('hola');
+    searchView.renderNotFound();
+  }
 };
 
 elements.searchBar.addEventListener('submit', e => {
