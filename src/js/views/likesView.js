@@ -1,13 +1,9 @@
 import { elements } from './base';
-import { limitRecipeTitle } from './searchView';
 
 //Method to change the like button color
 export const toggleLikeButton = isLiked => {
-  //String para el icono
   const iconString = isLiked ? 'icon-heart' : 'icon-heart-outlined';
-  console.log('hola');
 
-  //Cambiamos la imagen del botón
   document
     .querySelector('.button--like use')
     .setAttribute('href', `images/icons.svg#${iconString}`);

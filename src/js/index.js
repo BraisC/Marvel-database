@@ -55,7 +55,6 @@ elements.mainContent.addEventListener('click', event => {
 //Comic controller
 const comicController = async id => {
   const comicId = id;
-  console.log(comicId);
 
   if (comicId) {
     searchView.clearContent();
@@ -71,7 +70,6 @@ const comicController = async id => {
     comicView.renderComic(state.comic, state.likes.isLiked(comicId));
 
     clearLoader();
-    console.log(state.comic);
   }
 };
 
@@ -128,9 +126,9 @@ elements.likesMenu.addEventListener('click', event => {
 });
 
 elements.likesList.addEventListener('click', event => {
-  const recipe = event.target.closest('.likes__link');
-  if (recipe) {
-    comicController(recipe.dataset.id);
+  const comic = event.target.closest('.likes__link');
+  if (comic) {
+    comicController(comic.dataset.id);
   }
 });
 
