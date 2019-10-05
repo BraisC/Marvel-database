@@ -133,5 +133,8 @@ elements.likesList.addEventListener('click', event => {
 });
 
 document.querySelector('.main').addEventListener('click', () => {
-  document.querySelector('.activo').classList.remove('activo');
+  const activo = document.querySelector('.activo');
+  if (activo) {
+    activo.classList.remove('activo');
+  }
 });

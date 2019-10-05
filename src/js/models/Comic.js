@@ -10,7 +10,6 @@ export default class Comic {
       const result = await Axios(
         `https://gateway.marvel.com/v1/public/comics/${this.id}?apikey=${process.env.API_KEY}`
       );
-      console.log(result);
       this.title = result.data.data.results[0].title;
       this.issue = result.data.data.results[0].issueNumber;
       this.description = result.data.data.results[0].description;
