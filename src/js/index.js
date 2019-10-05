@@ -1,8 +1,10 @@
 import Search from './models/Search';
 import Comic from './models/Comic';
+import Likes from './models/Likes';
 import { elements, renderLoader, clearLoader } from './views/base';
 import * as searchView from './views/searchView';
 import * as comicView from './views/comicView';
+import * as likesView from './views/likesView';
 
 //This variable will store all the state of the app
 const state = {};
@@ -64,17 +66,61 @@ const comicController = async id => {
     state.comic.formatDate();
     state.comic.setCreators();
 
-    comicView.renderComic(state.comic);
+    comicView.renderComic(state.comic, state.likes.isLiked(comicId));
 
     clearLoader();
     console.log(state.comic);
   }
 };
 
+//Likes controller
+const likeController = () => {
+  if (!state.likes) state.likes = new Likes();
+
+  if (!state.likes.isLiked(state.comic.id)) {
+    const newLike = state.likes.addLike(state.comic);
+
+    likesView.toggleLikeButton(true);
+
+    likesView.renderLike(newLike);
+  } else {
+    state.likes.deleteLike(state.comic.id);
+
+    likesView.toggleLikeButton(false);
+
+    likesView.deleteLike(state.comic.id);
+  }
+
+  likesView.toggleLikeMenu(state.likes.getNumberLikes());
+};
+
+window.addEventListener('load', () => {
+  if (!state.likes) state.likes = new Likes();
+
+  state.likes.readFromLocal();
+
+  likesView.toggleLikeMenu(state.likes.getNumberLikes());
+
+  state.likes.likes.forEach(like => {
+    likesView.renderLike(like);
+  });
+});
+
 elements.mainContent.addEventListener('click', event => {
   const comic = event.target.closest('.results__item');
   const backButton = event.target.closest('.detail__back');
+  const likeButton = event.target.closest('.button--like');
 
   if (comic) comicController(comic.dataset.id);
   if (backButton) searchController(state.search.page);
+  if (likeButton) likeController();
+});
+
+elements.likesMenu.addEventListener('click', event => {
+  const likeMenu = event.target.closest('.likes__field');
+  if (likeMenu) {
+    likeMenu.classList.contains('activo')
+      ? likeMenu.classList.remove('activo')
+      : likeMenu.classList.add('activo');
+  }
 });

@@ -12,8 +12,20 @@
   </head>
   <body>
     <header class="header">
-      <a href="/"><img src="./images/logo-blanco.png" alt="Logo" class="header__logo"/></a>
-      <span class="header__subtitle">database</span>
+      <div class="header__main">
+        <a href="/"><img src="./images/logo-blanco.png" alt="Logo" class="header__logo"/></a>
+        <span class="header__subtitle">database</span>
+      </div>
+      <div class="header__likes">
+        <div class="likes__field" style="visibility: hidden;">
+          <svg class="likes__icon">
+            <use href="images/icons.svg#icon-heart"></use>
+          </svg>
+        </div>
+        <div class="likes__panel">
+          <ul class="likes__list"></ul>
+        </div>
+      </div>
     </header>
     <main class="main">
       <form class="searchbar" action="">

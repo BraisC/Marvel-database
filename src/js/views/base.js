@@ -2,6 +2,8 @@ export const elements = {
   searchBar: document.querySelector('.searchbar'),
   searchInput: document.querySelector('.searchbar__input'),
   mainContent: document.querySelector('.content'),
+  likesList: document.querySelector('.likes__list'),
+  likesMenu: document.querySelector('.likes__field'),
 };
 
 export const renderLoader = parent => {

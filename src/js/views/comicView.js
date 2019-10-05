@@ -9,27 +9,7 @@ const createCreator = (role, name) => {
   `;
 };
 
-const createButton = (type, url) => {
-  if (url) {
-    return `
-    <a href="${url}" target="_blank" class="button">
-      <svg class="button__icon">
-        <use href="images/icons.svg#icon-${type}"></use>
-      </svg>
-    </a>
-    `;
-  } else {
-    return `
-    <button class="button">
-      <svg class="button__icon">
-        <use href="images/icons.svg#icon-${type}"></use>
-      </svg>
-    </button>
-    `;
-  }
-};
-
-export const renderComic = (comic, isLiked, isReaded) => {
+export const renderComic = (comic, isLiked, isRead) => {
   const markup = `
       <section class="detail">
         <button class="detail__back"><i class="fas fa-angle-left detail__back__icon"></i>Go Back</button>
@@ -49,9 +29,21 @@ export const renderComic = (comic, isLiked, isReaded) => {
             ${comic.description || 'There is no description for this comic'}
           </p>
           <div class="detail__buttons">
-            ${createButton('shopping-cart', comic.url)}
-            ${createButton('check')}
-            ${isLiked ? createButton('heart') : createButton('heart-outlined')}
+            <a href="${comic.url}" target="_blank" class="button button--buy">
+              <svg class="button__icon">
+                <use href="images/icons.svg#icon-shopping-cart"></use>
+              </svg>
+            </a>
+            <button class="button button--like">
+              <svg class="button__icon">
+                <use href="images/icons.svg#icon-heart${isLiked ? '' : '-outlined'}"></use>
+              </svg>
+            </button>
+            <button class="button button--read">
+              <svg class="button__icon">
+                <use href="images/icons.svg#icon-circle-with-${isRead ? 'minus' : 'plus'}"></use>
+              </svg>
+            </button>
           </div>
         </div>
       </section>

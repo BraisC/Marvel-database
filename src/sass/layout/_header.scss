@@ -1,21 +1,99 @@
 .header {
-    width: 100%;
-    height: 10rem;
-    background-color: $color-primary;
+  width: 100%;
+  height: 10rem;
+  background-color: $color-primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  &__main {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
 
-    &__logo {
-        width: 16rem;
-    }
+  &__logo {
+    width: 16rem;
+  }
 
-    &__subtitle {
-        font-size: 2rem;
-        text-transform: uppercase;
-        color: white;
-        font-weight: 700;
-        position: relative;
-        top: -10px;
+  &__subtitle {
+    font-size: 2rem;
+    text-transform: uppercase;
+    color: white;
+    font-weight: 700;
+    position: relative;
+    top: -10px;
+  }
+
+  &__likes {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    height: 100%;
+  }
+}
+
+.likes {
+  &__field {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 3rem;
+  }
+  &__icon {
+    fill: #ffffff;
+    height: 3.75rem;
+    width: 3.75rem;
+  }
+
+  &__panel {
+    position: absolute;
+    border-radius: 0 0 5px 5px;
+    max-height: 75vh;
+    overflow-y: auto;
+    right: 0;
+    z-index: 999999;
+    padding: 0rem;
+    width: 30rem;
+    background-color: $color-primary;
+    box-shadow: $shadow-primary;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+
+  &__panel:hover,
+  &__field:hover + &__panel {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__panel.activo,
+  &__field.activo + &__panel {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__link {
+    width: 100%;
+    display: flex;
+    padding: 3rem;
+    color: #ffffff;
+    align-items: center;
+  }
+
+  &__fig {
+    width: 33%;
+    margin-right: 2rem;
+
+    & img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.3s;
     }
+  }
 }
