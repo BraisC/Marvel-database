@@ -27,16 +27,20 @@ export default class Comic {
 
   formatDate() {
     let date = new Date(this.date);
-    date = date.toLocaleDateString('en-US', { month: 'long', day: '2-digit', year: 'numeric' });
+    date = date.toLocaleDateString('en-US', {
+      month: 'long',
+      day: '2-digit',
+      year: 'numeric',
+    });
     this.date = date;
   }
 
   setCreators() {
     this.creators = this.creators.reduce((acc, elem) => {
-      if (acc.find(item => item.role === elem.role)) {
-        //modifies the returned object because in JS it is a reference to the original object
-        acc.find(item => item.role === elem.role).name += '|' + elem.name;
-        acc.find(item => item.role === elem.role).resourceURI += '|' + elem.resourceURI;
+      const creator = acc.find(item => item.role === elem.role);
+      if (creator) {
+        creator.name += '|' + elem.name;
+        creator.resourceURI += '|' + elem.resourceURI;
       } else {
         acc.push(elem);
       }
