@@ -1,7 +1,7 @@
 # Marvel-database
 Vanilla JS Practice Project
 
-## [Link](https://braisc.github.io/Marvel-database/dist/) to see it live
+## [Link](https://marvel.braiscao.dev/) to see it live
 
 Project made from scratch to practice what I learnt the past few months (HTML5, SASS and ES6 Javascipt)
 
